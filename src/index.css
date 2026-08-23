@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream-200 text-ink font-sans antialiased;
+    font-feature-settings: 'ss01' on, 'ss02' on;
+  }
+  ::selection {
+    @apply bg-aqua-300/60 text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid theme('colors.aqua.500');
+    outline-offset: 3px;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply font-mono text-[11px] tracking-widest2 uppercase text-aqua-700;
+  }
+  .container-page {
+    @apply mx-auto max-w-content px-6 md:px-10;
+  }
+  .surface {
+    @apply bg-cream-100 border border-line;
+  }
+  .contour-bg {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 38px,
+        rgba(87,160,171,0.10) 39px
+      );
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media print {
+  body { background: white; }
+}
+
+@layer components {
+  .social-icon {
+    @apply flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink-light hover:border-aqua-400 hover:text-aqua-600 transition-colors;
+  }
+}
+
+@layer components {
+  .cv-h {
+    @apply text-[11px] font-semibold uppercase tracking-widest2 text-ink border-b border-line pb-2 mb-3;
+  }
+}
+
+@media print {
+  #cv-print-area {
+    max-width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  nav, footer, .print\\:hidden { display: none !important; }
+}
+
+/* ============================================================
+   PUBLIC-FRONTEND "RESEARCH LAB" THEME
+   Additive only — everything above remains exactly as the Admin
+   Dashboard relies on it. These classes are only ever applied by
+   components under src/components/public, src/components/sections,
+   src/components/layout, src/pages/HomePage.tsx and
+   src/pages/ProjectDetailPage.tsx.
+   ============================================================ */
+@layer utilities {
+  .public-shell {
+    @apply bg-space-950 text-mist-100;
+    background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(56,169,199,0.08), transparent);
+  }
+  .eyebrow-lab {
+    @apply font-mono text-[10.5px] tracking-widest2 uppercase text-signal-400;
+  }
+  .surface-lab {
+    @apply bg-space-900 border border-linedark;
+  }
+  .card-lab {
+    @apply bg-space-900/60 border border-linedark backdrop-blur-sm;
+  }
+  .text-glow {
+    text-shadow: 0 0 24px rgba(94,195,222,0.25);
+  }
+}
+
+@layer components {
+  .social-icon-lab {
+    @apply flex h-9 w-9 items-center justify-center rounded-full border border-linedark text-mist-300 hover:border-signal-400/60 hover:text-signal-300 transition-colors;
+  }
+}
